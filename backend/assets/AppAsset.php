@@ -1,7 +1,7 @@
 <?php
 
 namespace backend\assets;
-
+ 
 use yii\web\AssetBundle;
 
 /**
