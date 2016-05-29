@@ -31,10 +31,9 @@ class MarcaController extends Controller
                 'class' => AccessControl::className(),
                 'only' => ['create', 'update','delete','index'],
                 'rules' => [
-                    // deny all POST requests
                     [
-                        'allow' => false,
-                        'verbs' => ['POST']
+                        'allow' => true,
+                        'roles' => ['@'],
                     ],
                 ],
             ],

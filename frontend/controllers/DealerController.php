@@ -26,18 +26,17 @@ class DealerController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+            ],
                 'access' => [
                     'class' => AccessControl::className(),
                     'only' => ['create', 'update','delete','index'],
                     'rules' => [
-                        // deny all POST requests
                         [
-                            'allow' => false,
-                            'verbs' => ['POST']
+                            'allow' => true,
+                            'roles' => ['@'],
                         ],
                     ],
                 ],
-            ],
         ];
     }
 
