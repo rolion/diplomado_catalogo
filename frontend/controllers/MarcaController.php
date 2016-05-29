@@ -8,6 +8,7 @@ use frontend\models\MarcaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * MarcaController implements the CRUD actions for Marca model.
@@ -24,6 +25,17 @@ class MarcaController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'update','delete','index'],
+                'rules' => [
+                    // deny all POST requests
+                    [
+                        'allow' => false,
+                        'verbs' => ['POST']
+                    ],
                 ],
             ],
         ];

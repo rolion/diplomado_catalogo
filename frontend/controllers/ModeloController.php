@@ -8,6 +8,7 @@ use frontend\models\ModeloSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ModeloController implements the CRUD actions for Modelo model.
@@ -25,6 +26,17 @@ class ModeloController extends Controller
                 'actions' => [
                 
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'update','delete','index'],
+                'rules' => [
+                    // deny all POST requests
+                    [
+                        'allow' => false,
+                        'verbs' => ['POST']
+                    ],
                 ],
             ],
         ];

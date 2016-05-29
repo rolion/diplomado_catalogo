@@ -8,6 +8,7 @@ use frontend\models\DealerSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * DealerController implements the CRUD actions for Dealer model.
@@ -24,6 +25,17 @@ class DealerController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+                'access' => [
+                    'class' => AccessControl::className(),
+                    'only' => ['create', 'update','delete','index'],
+                    'rules' => [
+                        // deny all POST requests
+                        [
+                            'allow' => false,
+                            'verbs' => ['POST']
+                        ],
+                    ],
                 ],
             ],
         ];
